@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Pinacoteca_TFinal.Views.UCAgregar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Pinacoteca_TFinal.Views"
+             mc:Ignorable="d" 
+           d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Margin="10" Background="MediumSlateBlue">
+        <StackPanel.Resources>
+
+            <Style TargetType="TextBox">
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="FontFamily" Value="Tw Cen MT"></Setter>
+                <Setter Property="Width" Value="700"></Setter>
+
+
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="white"></Setter>
+                <Setter Property="FontFamily" Value="Tw Cen MT"></Setter>
+                <Setter Property="FontSize" Value="19"></Setter>
+
+
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Foreground" Value="white"></Setter>
+                <Setter Property="FontFamily" Value="Tw Cen MT"></Setter>
+                <Setter Property="FontSize" Value="19"></Setter>
+                <Setter Property="Background" Value="CornflowerBlue"></Setter>
+
+
+
+
+            </Style>
+        </StackPanel.Resources>
+        <TextBlock FontSize="33" HorizontalAlignment="Center"  FontFamily="Tw Cen MT" Foreground="White" FontWeight="ExtraBold">Agregar </TextBlock>
+        <Label>Nombre</Label>
+        <TextBox Text="{Binding Pinacoteca.Nombre}"></TextBox>
+        <Label>Ciudad</Label>
+        <TextBox Text="{Binding Pinacoteca.Ciudad}"></TextBox>
+        <Label>Dirección</Label>
+        <TextBox Text="{Binding Pinacoteca.Direccion}"></TextBox>
+        <Label>Metros Cuadrados</Label>
+        <TextBox Text="{Binding Pinacoteca.Area}"></TextBox>
+
+
+        <Grid Height="50">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+
+            <Button Margin="20,20,10,0" Command="{Binding AgregarCommand}">Agregar</Button>
+            <Button Grid.Column="1" Margin="10,20,20,0" Command="{Binding CancelarCommand}">Cancelar</Button>
+
+        </Grid>
+        <TextBlock Text="{Binding Error}"></TextBlock>
+
+    </StackPanel>
+</UserControl>
+

@@ -1,0 +1,71 @@
+﻿<Window x:Class="Pinacoteca_TFinal.Views.PinacotecasView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pinacoteca_TFinal.Views" xmlns:vm="clr-namespace:Pinacoteca_TFinal.ViewModels"
+        mc:Ignorable="d"
+         Height="450" Width="800">
+    <DockPanel>
+        <DockPanel.DataContext>
+            <vm:PinacotecasViewModel></vm:PinacotecasViewModel>
+        </DockPanel.DataContext>
+
+        <DockPanel DockPanel.Dock="Left" Width="150">
+            <Button Height="50" DockPanel.Dock="Bottom" Command="{Binding CambiarVistaCommand}" FontSize="18" Foreground="white" FontFamily="Tw Cen MT" CommandParameter="agregar" Background="DarkOrchid">Agregar</Button>
+
+            <ListBox Background="Violet" FontFamily="Tw Cen MT" FontSize="16" Foreground="White" SelectedIndex="0" ItemsSource="{Binding Pinacotecas}" DisplayMemberPath="Nombre" SelectedItem="{Binding Pinacoteca}">
+                <ListBox.ContextMenu>
+                    <ContextMenu >
+                        <MenuItem Header="Editar" Command="{Binding CambiarVistaCommand}" CommandParameter="editar"></MenuItem>
+                        <MenuItem Header="Eliminar" Command="{Binding CambiarVistaCommand}" CommandParameter="eliminar"></MenuItem>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
+
+        </DockPanel>
+        <ContentControl Background="#56494E">
+            <ContentControl.Resources>
+                <local:UCAgregar x:Key="agregar"></local:UCAgregar>
+                <local:UCEditar x:Key="editar"></local:UCEditar>
+                <local:UCEliminar x:Key="eliminar"></local:UCEliminar>
+                <local:UCDatos x:Key="ver"></local:UCDatos>
+            </ContentControl.Resources>
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Vista}" Value="ver">
+                            <Setter Property="Content" Value="{StaticResource ver}"></Setter>
+
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="agregar">
+                            <Setter Property="Content" Value="{StaticResource agregar}"></Setter>
+
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="eliminar">
+                            <Setter Property="Content" Value="{StaticResource eliminar}"></Setter>
+
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="editar">
+                            <Setter Property="Content" Value="{StaticResource editar}"></Setter>
+
+                        </DataTrigger>
+
+
+
+                    </Style.Triggers>
+
+
+                </Style>
+            </ContentControl.Style>
+
+        </ContentControl>
+
+
+
+
+    </DockPanel>
+</Window>
+
+       
+      
